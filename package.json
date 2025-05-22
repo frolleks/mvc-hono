@@ -1,12 +1,21 @@
 {
   "name": "mvc-hono",
-  "module": "index.ts",
+  "module": "app/server.ts",
   "type": "module",
   "private": true,
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/react": "^19.1.5",
+    "@types/react-dom": "^19.1.5",
+    "prisma": "^6.8.2"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.8.2",
+    "hono": "^4.7.10",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   }
 }

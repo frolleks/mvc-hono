@@ -1,9 +1,6 @@
 import { Posts } from "@models/posts.model";
 import type { Context } from "hono";
 
-import PostsView from "@views/posts/index.tsx";
-import PostView from "@views/posts/show";
-
 import { renderComponentWithLayout } from "../../lib/renderComponentWithLayout";
 
 export default {
@@ -33,8 +30,8 @@ export default {
     );
   },
   async create(c: Context) {
-    const data = await c.req.json();
-    if (!data.title || !data.content) {
+    const data = await c.req.formData();
+    if (!data.get("title") || !data.get("content")) {
       return c.json({ error: "Title and content are required" }, 400);
     }
     const post = await Posts.create(data);

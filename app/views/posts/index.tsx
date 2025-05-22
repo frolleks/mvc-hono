@@ -11,6 +11,11 @@ export default function PostsView({ posts }: { posts: Post[] }) {
           </li>
         ))}
       </ul>
+      <form method="POST" action="/posts" className="form">
+        <input type="text" name="title" placeholder="Title" required />
+        <textarea name="content" placeholder="Content" required></textarea>
+        <button type="submit">Create Post</button>
+      </form>
     </div>
   );
 }

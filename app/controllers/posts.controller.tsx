@@ -12,7 +12,7 @@ export default {
     return c.body(
       await renderComponentWithLayout("posts/index", { posts }),
       200,
-      { "Content-Type": "text/html" }
+      { "Content-Type": "text/html" },
     );
   },
   async show(c: Context) {
@@ -29,7 +29,7 @@ export default {
       200,
       {
         "Content-Type": "text/html",
-      }
+      },
     );
   },
   async create(c: Context) {

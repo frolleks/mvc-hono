@@ -10,7 +10,7 @@ export default {
   async index(c: Context) {
     const posts = await Posts.getAll();
     return c.body(
-      await renderComponentWithLayout(<PostsView posts={posts} />),
+      await renderComponentWithLayout("posts/index", { posts }),
       200,
       { "Content-Type": "text/html" }
     );
@@ -25,7 +25,7 @@ export default {
       return c.json({ error: "Post not found" }, 404);
     }
     return c.body(
-      await renderComponentWithLayout(<PostView post={post} />),
+      await renderComponentWithLayout("posts/show", { post }),
       200,
       {
         "Content-Type": "text/html",

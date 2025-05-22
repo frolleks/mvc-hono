@@ -5,7 +5,14 @@ import {
 } from "react-dom/server";
 
 export async function renderComponentWithLayout(
-  children: React.ReactNode
+  viewName: string,
+  props: Record<string, any>
 ): Promise<ReactDOMServerReadableStream> {
-  return await renderToReadableStream(<Layout>{children}</Layout>);
+  // Dynamically import the view component based on viewName
+  const ViewComponent = (await import(`@views/${viewName}`)).default;
+  return await renderToReadableStream(
+    <Layout>
+      <ViewComponent {...props} />
+    </Layout>
+  );
 }

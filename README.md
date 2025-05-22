@@ -1,5 +1,7 @@
 # mvc-hono
 
+This is the insane combination of Bun (I might try to support Node.js and Deno in the future), Hono, RSC, and Prisma. Hope this'll work out.
+
 To install dependencies:
 
 ```bash

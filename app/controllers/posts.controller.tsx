@@ -3,16 +3,16 @@ import type { Context } from "hono";
 
 import { renderToReadableStream } from "react-dom/server";
 
-import IndexView from "@views/posts/index.tsx";
+import PostsView from "@views/posts/index.tsx";
+import PostView from "@views/posts/show";
 
 export default {
-  async index() {
+  async index(c: Context) {
     const posts = await Posts.getAll();
-    return new Response(
-      await renderToReadableStream(<IndexView posts={posts} />),
-      {
-        headers: { "Content-Type": "text/html" },
-      }
+    return c.body(
+      await renderToReadableStream(<PostsView posts={posts} />),
+      200,
+      { "Content-Type": "text/html" }
     );
   },
   async show(c: Context) {
@@ -24,7 +24,9 @@ export default {
     if (!post) {
       return c.json({ error: "Post not found" }, 404);
     }
-    return c.json(post);
+    return c.body(await renderToReadableStream(<PostView post={post} />), 200, {
+      "Content-Type": "text/html",
+    });
   },
   async create(c: Context) {
     const data = await c.req.json();

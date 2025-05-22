@@ -1,6 +1,6 @@
 import type { Post } from "../../../generated/prisma";
 
-export default function IndexView({ posts }: { posts: Post[] }) {
+export default function PostsView({ posts }: { posts: Post[] }) {
   return (
     <div>
       <h1>Posts</h1>

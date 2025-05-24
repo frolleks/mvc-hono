@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Layout from "@views/layout";
 import {
   renderToReadableStream,
